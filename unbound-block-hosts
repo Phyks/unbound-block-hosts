@@ -103,14 +103,13 @@ foreach my $line (split("\n", $res->content)) {
 
 	} elsif ($line !~ /^\s*\#/ && $line !~ /^\s*$/) {
 		my $section = $sections[-1];
-		if (!$section) {
-			$discarded++;
+		$line =~ s/\s*\#.+$//;
+		(undef, $name) = split(/\s+/, $line, 2);
 
-		} elsif ($opt->{$section}) {
-			$line =~ s/\s*\#.+$//;
-			(undef, $name) = split(/\s+/, $line, 2);
-			push(@names, $name);
-		}
+		$name =~ s/^\s+//;
+		$name =~ s/\s+$//;
+
+		push(@names, $name);
 	}
 }
 
