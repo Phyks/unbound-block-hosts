@@ -1,3 +1,9 @@
+This is a script to download, parse and convert some hosts files into Unbound
+compatible configurations file. Now using only Bash and Python stuff.
+
+
+# Old version
+
 **Note**: This is a fork of https://github.com/jodrell/unbound-block-hosts. You should use the original repo. This fork adds support for other hosts lists such as malwaredomains and Yoyo, but the patch is quite ugly. Feel free to PR a cleaner version. Use this fork only if you have to handle such lists and not Pollock's one.
 
 # NAME
