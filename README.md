@@ -1,6 +1,9 @@
 This is a script to download, parse and convert some hosts files into Unbound
 compatible configurations file. Now using only Bash and Python stuff.
 
+Just run `./run.sh` and add `include: /var/unbound/includes/dnsblock.conf` in
+your Unbound server config.
+
 
 # Old version
 

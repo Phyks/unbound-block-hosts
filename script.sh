@@ -24,7 +24,7 @@ curl "http://winhelp2002.mvps.org/hosts.txt" > /tmp/dnsblock/6.txt
 
 cat /tmp/dnsblock/*.txt | sed -e '/^[[:blank:]]*#/d;s/#.*//' | sed -e '/^\s*$/d' | grep -v localhost | grep -v broadcasthost | sort | uniq | sed -e 's/0\.0\.0\.0/127\.0\.0\.1/g' | sed -e 's/\t/  /g' > /tmp/dnsblock/dnsblock.txt
 
-python -c "for line in open('/tmp/dnsblock/dnsblock.txt', 'r'): print('local-data: \"%s IN A %s\"' % tuple(reversed(line.split())))" > /etc/unbound/includes/dnsblock.conf
+python -c "for line in open('/tmp/dnsblock/dnsblock.txt', 'r'): print('local-zone: \"%s\" static' % line.split()[-1])" | sort | uniq > /etc/unbound/includes/dnsblock.conf
 
 rm -rf /tmp/dnsblock
 
